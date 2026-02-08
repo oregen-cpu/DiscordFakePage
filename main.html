@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #5865F2;
+            background-image: url('./background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .page-logo {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 130px;
+            height: auto;
+            opacity: 1;
+        }
+
+        .login-container {
+            background: #36383d;
+            border-radius: 8px;
+            padding: 32px;
+            width: 100%;
+            max-width: 784px;
+            /* ========================================== */
+            /* MODIFIER LA HAUTEUR DE LA FENÊTRE ICI     */
+            /* Réduire cette valeur pour diminuer la hauteur */
+            max-height: 550px;
+            /* ========================================== */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
+            display: flex;
+            gap: 50px;
+            position: relative;
+        }
+
+        .login-box {
+            max-width: 416px;
+            flex: 1;
+        }
+
+        .qr-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .qr-title {
+            color: #FFFFFF;
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .qr-code-image {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 20px;
+        }
+
+        .qr-description {
+            color: #C4C6CC;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            max-width: 200px;
+        }
+
+        .qr-description strong {
+            font-weight: 700;
+        }
+
+        .qr-alternative {
+            color: #00A8FC;
+            font-size: 14px;
+            text-decoration: none;
+            transition: text-decoration 0.15s ease;
+        }
+
+        .qr-alternative:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #F2F3F5;
+            font-size: 21px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #B5BAC1;
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #FFFFFF;
+            font-size: 12px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .required {
+            color: #F23F42;
+            margin-left: 2px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 11px 14px;
+            background: rgba(24, 24, 24, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            color: #F2F3F5;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #5865F2;
+        }
+
+        input::placeholder {
+            color: #6D6F78;
+        }
+
+        .forgot-password {
+            display: inline-block;
+            color: rgb(131, 146, 231);
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 4px;
+            font-weight: 400;
+            transition: text-decoration 0.15s ease;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 11px 16px;
+            background: #5865F2;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.17s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .login-button:hover {
+            background: #4752C4;
+        }
+
+        .login-button:active {
+            background: #3C45A5;
+        }
+
+        .signup-link {
+            margin-top: 8px;
+            color: #949BA4;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: rgb(131, 146, 231);
+            text-decoration: none;
+            transition: text-decoration 0.15s ease;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+
+        @media (max-width: 900px) {
+            .login-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .qr-section {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .page-logo {
+                width: 100px;
+                top: 30px;
+                left: 30px;
+            }
+
+            .qr-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="logo.png" alt="Logo" class="page-logo">
+
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Ha, te revoilà !</h1>
+            <p class="subtitle">Nous sommes si heureux de te revoir !</p>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">E-mail ou numéro de téléphone <span class="required">*</span></label>
+                    <input type="text" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mot de passe <span class="required">*</span></label>
+                    <input type="password" id="password" required>
+                    <a href="#" class="forgot-password">Tu as oublié ton mot de passe ?</a>
+                </div>
+
+                <button type="submit" class="login-button">Connexion</button>
+
+                <div class="signup-link">
+                    Besoin d'un compte ? <a href="#">S'inscrire</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="qr-section">
+            <img src="QR.png" alt="QR Code" class="qr-code-image">
+            <h2 class="qr-title">Se connecter avec un code QR</h2>
+            <p class="qr-description">
+                Scanne-le avec l'<strong>application mobile Discadre</strong> pour te connecter instantanément.
+            </p>
+            <a href="#" class="qr-alternative">Sinon, connecte-toi avec une clé d'acc...</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (email && password) {
+                alert('Connexion en cours...');
+            }
+        });
+    </script>
+</body>
+</html>
